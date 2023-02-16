@@ -1,0 +1,47 @@
+package com.example.demo.core.domain.service.impl;
+
+import com.example.demo.core.domain.model.Product;
+import com.example.demo.core.domain.service.interfaces.IProductRepository;
+import com.example.demo.core.domain.service.interfaces.IProductService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService implements IOrderService {
+
+    private final IOrderRepository orderRepository;
+
+    ProductService(IOrderRepository orderRepository){
+
+        this.orderRepository = orderRepository;
+    }
+
+    public void createOrder (Order order) {
+
+        orderRepository.save(order);
+    }
+
+    @Override
+    public void updateProduct(Order order) {
+
+        orderRepository.save(product);
+    }
+
+    @Override
+    public void deleteProduct(Order order) {
+
+        orderRepository.delete(product);
+    }
+
+    @Override
+    public Product getProduct(int id) {
+
+        return null;
+    }
+
+    @Override
+    public Iterable<Order> getAllOrders() {
+
+        return orderRepository.findAll();
+    }
+
+}
