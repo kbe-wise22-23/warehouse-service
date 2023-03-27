@@ -7,10 +7,16 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: orders
+      POSTGRES_DB: warehouse
 
   rabbitmq:
     image: rabbitmq:management
     ports:
       - "5672:5672"
       - "15672:15672"
+
+
+  zipkin:
+    image: openzipkin/zipkin:latest
+    ports:
+      - "9411:9411"

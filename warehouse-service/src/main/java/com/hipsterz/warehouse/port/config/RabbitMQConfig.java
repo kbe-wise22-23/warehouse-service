@@ -1,56 +1,45 @@
 package com.hipsterz.warehouse.port.config;
 
-/*
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+
 @Configuration
 public class RabbitMQConfig {
-
-    @Value("shipment")
-    private String shipmentQueue;
-
-    @Value("item")
-    private String itemQueue;
-
-    @Value("shipment_exchange")
-    private String exchange;
-
-    @Value("shipment_routing_key")
-    private String routingKey;
-
-    @Value("item_routing_key")
-    private String itemRoutingKey;
-
     @Bean
-    public Queue shipmentQueue() {
-        return new Queue(shipmentQueue);
+    public MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
+    @Value("update_order")
+    private String requestQueue;
+
+    @Value("payment")
+    private String paymentExchange;
+
     @Bean
-    public Queue itemQueue() {
-        return new Queue(itemQueue);
+    public Queue requestQueue() {
+        return new Queue(requestQueue);
     }
 
     @Bean
     public TopicExchange exchange() {
-        return new TopicExchange(exchange);
+        return new TopicExchange(paymentExchange);
     }
 
     @Bean
-    public Binding binding() {
+    public Binding paymentExchangeRequestQueueBinding() {
         return BindingBuilder
-                .bind(shipmentQueue())
+                .bind(requestQueue())
                 .to(exchange())
-                .with(routingKey);
+                .with("update.order");
     }
-
-    @Bean
-    public Binding itemBinding() {
-        return BindingBuilder
-                .bind(itemQueue())
-                .to(exchange())
-                .with(itemRoutingKey);
-    }
-
 }
 
-
- */

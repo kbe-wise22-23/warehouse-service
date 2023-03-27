@@ -1,8 +1,8 @@
 package com.hipsterz.warehouse.core.domain.service.impl;
 
-import com.hipsterz.warehouse.core.domain.model.Shipment;
 import com.hipsterz.warehouse.core.domain.service.interfaces.IShipmentRepository;
 import com.hipsterz.warehouse.core.domain.service.interfaces.IShipmentService;
+import com.hipsterz.warehouse.core.domain.model.Shipment;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

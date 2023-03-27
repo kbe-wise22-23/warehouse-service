@@ -1,5 +1,5 @@
 package com.hipsterz.warehouse.core.domain.model;
-//package com.postgresql.orders.model;
+
 
 import jakarta.persistence.*;
 import lombok.Data;

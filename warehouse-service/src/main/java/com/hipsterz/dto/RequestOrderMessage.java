@@ -26,15 +26,18 @@ public class RequestOrderMessage {
     @JsonProperty("province")
     private String province;
 
+
+
     public RequestOrderMessage() {}
 
-    public RequestOrderMessage(UUID orderId, OrderStatus orderStatus, String customerName, String street, String zipcode, String  province ) {
+    public RequestOrderMessage(UUID orderId, OrderStatus orderStatus, String customerName, String street, String zipcode, String  province) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.customerName = customerName;
         this.street = street;
         this.zipcode = zipcode;
         this.province = province;
+
     }
 
     public RequestOrderMessage(UUID orderId, OrderStatus orderStatus, String customerName, String street, String zipcode, String province, String country) {
@@ -71,5 +74,8 @@ public class RequestOrderMessage {
         return province;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
 }
 
